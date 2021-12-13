@@ -12,15 +12,14 @@ class Bootcamp {
         this.level = level;
         this.students = students;
     }
-        addStudent(students){
-            return this.students;
-    } 
-            registerStudent(studentToRegister){
-                if(this.students.filter(st => st.email === studentToRegister.email).length){
-                    students.push();
-                }       
-                else{
+    registerStudent(student) {
+        if (this.students.filter(s => s.email === student.email).length) {
+            console.log(`Registering ${studsent.email} is already registered!`);
+        } else {
+            this.students.push(student);
+            console.log(`Registering ${student.email} to the bootcamp ${this.name}.`);
         }
+        return this.students;
     }
-    }
+}
 
