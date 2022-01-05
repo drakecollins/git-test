@@ -1,6 +1,7 @@
 import { render } from "@testing-library/react";
-import React from "react";
-import { CardImg, CardText, CardBody, CardTitle } from "reactstrap";
+import React from 'react';
+import { CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function RenderCampsite({campsite}) {
         return(
@@ -8,7 +9,6 @@ function RenderCampsite({campsite}) {
                 <card className="selected">
                     <CardImg top src={campsite.image} alt={campsite.name} />
                     <CardBody>
-                        <CardTitle>{campsite.name}</CardTitle>
                         <CardText>{campsite.description}</CardText>
                     </CardBody>
                 </card>
@@ -49,6 +49,16 @@ function CampsiteInfo(props) {
         if (props.campsite){
             return (
                 <div className="container">
+                    <div className="row">
+                        <div className="col">
+                                <Breadcrumb>
+                                    <BreadcrumbItem><link to="/directory">Directory</link></BreadcrumbItem>
+                                    <BreadcrumbItem active>{props.campsite.name}</BreadcrumbItem>
+                                </Breadcrumb>
+                            <h2>{props.campsite.name}</h2>
+                            <hr />
+                        </div>
+                    </div>    
                     <div classNAme="row">
                         <RenderCampsite campsite={props.campsite} />
                         <RenderComments comments={props.campsite.comments} />

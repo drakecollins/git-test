@@ -11,7 +11,7 @@ function RenderCard({item}) {
             </CardBody>
 
         </Card>
-    )
+    );
 
 }
 
