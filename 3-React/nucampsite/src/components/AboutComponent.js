@@ -27,7 +27,7 @@ function About(props) {
 
     const partners = props.partners.map(partner => {
         return (
-            <h5>{partner.name}</h5>
+            <Media tag="li" key={partner} />
         );
     });
 
