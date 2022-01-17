@@ -1,10 +1,11 @@
 import { render } from "@testing-library/react";
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Button, Modal, ModalBody, ModalHeader, Label, } from 'reactstrap';
 import { Link, withRouter } from 'react-router-dom';
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
+import { baseURL } from '../shared/baseURL';
 
 
 const mapStateToProps = state => {
@@ -20,7 +21,7 @@ function RenderCampsite({campsite}) {
         return(
             <div key = {campsite.id} className="col-md-5 m-1">
                 <card className="selected">
-                    <CardImg top src={campsite.image} alt={campsite.name} />
+                    <CardImg top src={baseURL + campsite.image} alt={campsite.name} />
                     <CardBody>
                         <CardText>{campsite.description}</CardText>
                     </CardBody>
