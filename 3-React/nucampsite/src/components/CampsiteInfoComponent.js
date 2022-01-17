@@ -4,7 +4,8 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Link, withRouter } from 'react-router-dom';
 import { Control, LocalForm, Errors } from "react-redux-form";
 import { connect } from 'react-redux';
-import ModalBody from "reactstrap/lib/ModalBody";
+import { Loading } from './LoadingComponent';
+
 
 const mapStateToProps = state => {
     return {
@@ -57,6 +58,27 @@ function RenderComments({comments, addComment, campsiteId}) {
     }
 
 function CampsiteInfoComponent(props) {
+
+        if (props.isLoading) {
+            return (
+                <div className="container">
+                    <div classNAme="row">
+                        <Loading />
+                    </div>
+                </div>
+            );
+        }
+        if (props.errMEss) {
+            return (
+                <div classNAme="container">
+                    <div className="row">
+                        <div className="col">
+                            <h4>{props.errMess}</h4>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
         
         if (props.campsite){
             return (
