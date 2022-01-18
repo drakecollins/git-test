@@ -6,6 +6,7 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
 import { baseURL } from '../shared/baseURL';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 const mapStateToProps = state => {
@@ -20,12 +21,18 @@ const mapStateToProps = state => {
 function RenderCampsite({campsite}) {
         return(
             <div key = {campsite.id} className="col-md-5 m-1">
-                <card className="selected">
-                    <CardImg top src={baseURL + campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardText>{campsite.description}</CardText>
-                    </CardBody>
-                </card>
+                <FadeTransform
+                    in
+                    transformProps={{
+                        exitTransform: 'scale(0,5) translate(-50%)'
+                    }}>
+                    <card className="selected">
+                        <CardImg top src={baseURL + campsite.image} alt={campsite.name} />
+                        <CardBody>
+                            <CardText>{campsite.description}</CardText>
+                        </CardBody>
+                    </card>
+                </FadeTransform>
             </div>
         );
     }
@@ -35,22 +42,26 @@ function RenderComments({comments, postComment, campsiteId}) {
             return (
                 <div className="col-md-5 m-1">
                     <h4>Comments:</h4>
+                    <Stagger in>
                         {comments.map(comment => {
                             return (
-                                <div key={comment.id}>
-                                    <p>
-                                        {comment.text}
-                                        <br />
-                                        -- {comment.author},
-                                        {new Intl.DateTimeFormat("en-US", {
-                                            year: "numeric",
-                                            month: "short",
-                                            day: "2-digit",
-                                        }).format(new Date(Date.parse(comment.date)))}
-                                    </p>
-                                </div>
+                                <Fade in key={comment.id}>
+                                    <div>
+                                        <p>
+                                            {comment.text}
+                                            <br />
+                                            -- {comment.author},
+                                            {new Intl.DateTimeFormat("en-US", {
+                                                year: "numeric",
+                                                month: "short",
+                                                day: "2-digit",
+                                            }).format(new Date(Date.parse(comment.date)))}
+                                        </p>
+                                    </div>
+                                </Fade>
                             );
                         })}
+                    </Stagger>
                         <CommentForm campsiteId={campsiteId} addComment={postComment} />
                 </div>
             );
