@@ -5,7 +5,7 @@ import { Loading } from './LoadingComponent';
 import { baseURL } from '../shared/baseURL';
 
 
-function RenderDirectoryItem({campsite}) {
+function RenderDirectoryItem({campsite, onClick}) {
     return(
                 <Card>
                     <Link to={`/directory/${campsite.id}`}>
@@ -47,6 +47,7 @@ function Directory(props) {
             </div>
             );
         }
+
         return (
             <div className="container">
                 <div className="row">

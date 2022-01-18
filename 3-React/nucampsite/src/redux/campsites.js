@@ -1,4 +1,3 @@
-import { CAMPSITES } from '../shared/campsites';
 import * as ActionTypes from './ActionTypes';
 
 
@@ -19,9 +18,3 @@ export const Campsites = (state = {
     }
 };
 
-/*export const Campsites = (state = CAMPSITES, action) => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};*/

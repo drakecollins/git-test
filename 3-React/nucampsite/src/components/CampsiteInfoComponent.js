@@ -24,7 +24,7 @@ function RenderCampsite({campsite}) {
                 <FadeTransform
                     in
                     transformProps={{
-                        exitTransform: 'scale(0,5) translate(-50%)'
+                        exitTransform: 'scale(0,5) translate(-20%)'
                     }}>
                     <card className="selected">
                         <CardImg top src={baseURL + campsite.image} alt={campsite.name} />
@@ -82,7 +82,7 @@ function CampsiteInfoComponent(props) {
         }
         if (props.errMEss) {
             return (
-                <div classNAme="container">
+                <div className="container">
                     <div className="row">
                         <div className="col">
                             <h4>{props.errMess}</h4>

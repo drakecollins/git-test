@@ -17,7 +17,7 @@ class Contact extends Component {
         this.state = {
             firstName: '',
             lastName: '',
-            phoneNumber: '',
+            phoneNum: '',
             email: '',
             agree: false,
             contactType: 'By Phone',
